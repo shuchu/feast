@@ -17,10 +17,9 @@ from datetime import datetime
 from multiprocessing.pool import ThreadPool
 from queue import Empty, Queue
 from threading import Lock, Thread
-from typing import Any, Callable, Dict, Iterator, List, Optional, Sequence, Tuple
+from typing import Any, Callable, Dict, Iterator, List, Optional, Sequence, Tuple, Literal
 
 from pydantic import PositiveInt, StrictStr
-from pydantic.typing import Literal
 
 from feast import Entity, utils
 from feast.errors import FeastProviderLoginError

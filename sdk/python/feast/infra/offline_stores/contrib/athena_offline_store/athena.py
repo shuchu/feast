@@ -11,6 +11,7 @@ from typing import (
     Optional,
     Tuple,
     Union,
+    Literal,
 )
 
 import numpy as np
@@ -18,7 +19,6 @@ import pandas as pd
 import pyarrow
 import pyarrow as pa
 from pydantic import StrictStr
-from pydantic.typing import Literal
 from pytz import utc
 
 from feast import OnDemandFeatureView

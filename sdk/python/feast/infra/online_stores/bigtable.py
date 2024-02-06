@@ -2,13 +2,12 @@ import hashlib
 import logging
 from concurrent import futures
 from datetime import datetime
-from typing import Any, Callable, Dict, List, Optional, Sequence, Set, Tuple
+from typing import Any, Callable, Dict, List, Optional, Sequence, Set, Tuple, Literal
 
 import google
 from google.cloud import bigtable
 from google.cloud.bigtable import row_filters
 from pydantic import StrictStr
-from pydantic.typing import Literal
 
 from feast import Entity, FeatureView, utils
 from feast.feature_view import DUMMY_ENTITY_NAME

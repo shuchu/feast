@@ -13,14 +13,14 @@ from typing import (
     Optional,
     Tuple,
     Union,
+    Literal
 )
 
 import numpy as np
 import pandas as pd
 import pyarrow
 import pyarrow.parquet
-from pydantic import ConstrainedStr, StrictStr, validator
-from pydantic.typing import Literal
+from pydantic import StrictStr, field_validator
 from tenacity import Retrying, retry_if_exception_type, stop_after_delay, wait_fixed
 
 from feast import flags_helper
@@ -71,14 +71,6 @@ except ImportError as e:
 def get_http_client_info():
     return http_client_info.ClientInfo(user_agent=get_user_agent())
 
-
-class BigQueryTableCreateDisposition(ConstrainedStr):
-    """Custom constraint for table_create_disposition. To understand more, see:
-    https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#JobConfigurationLoad.FIELDS.create_disposition"""
-
-    values = {"CREATE_NEVER", "CREATE_IF_NEEDED"}
-
-
 class BigQueryOfflineStoreConfig(FeastConfigBaseModel):
     """Offline store config for GCP BigQuery"""
 
@@ -102,10 +94,13 @@ class BigQueryOfflineStoreConfig(FeastConfigBaseModel):
     gcs_staging_location: Optional[str] = None
     """ (optional) GCS location used for offloading BigQuery results as parquet files."""
 
-    table_create_disposition: Optional[BigQueryTableCreateDisposition] = None
-    """ (optional) Specifies whether the job is allowed to create new tables. The default value is CREATE_IF_NEEDED."""
+    table_create_disposition: Literal["CREATE_NEVER", "CREATE_IF_NEEDED"] = "CREATE_IF_NEEDED"
+    """ (optional) Specifies whether the job is allowed to create new tables. The default value is CREATE_IF_NEEDED.
+    Custom constraint for table_create_disposition. To understand more, see:
+    https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#JobConfigurationLoad.FIELDS.create_disposition
+    """
 
-    @validator("billing_project_id")
+    @field_validator("billing_project_id")
     def project_id_exists(cls, v, values, **kwargs):
         if v and not values["project_id"]:
             raise ValueError(

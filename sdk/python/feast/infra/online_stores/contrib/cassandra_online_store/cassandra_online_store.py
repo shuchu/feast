@@ -20,7 +20,7 @@ Cassandra/Astra DB online store for Feast.
 
 import logging
 from datetime import datetime
-from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Tuple, Literal
 
 from cassandra.auth import PlainTextAuthProvider
 from cassandra.cluster import (
@@ -34,7 +34,6 @@ from cassandra.concurrent import execute_concurrent_with_args
 from cassandra.policies import DCAwareRoundRobinPolicy, TokenAwarePolicy
 from cassandra.query import PreparedStatement
 from pydantic import StrictFloat, StrictInt, StrictStr
-from pydantic.typing import Literal
 
 from feast import Entity, FeatureView, RepoConfig
 from feast.infra.key_encoding_utils import serialize_entity_key
