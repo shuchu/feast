@@ -1,3 +1,5 @@
+# debug
+import inspect
 import logging
 import os
 import warnings
@@ -6,11 +8,15 @@ from typing import Any, Dict, Optional
 
 import yaml
 from pydantic import (
-    field_validator, model_validator, ConfigDict, BaseModel,
+    BaseModel,
+    ConfigDict,
     Field,
     StrictInt,
     StrictStr,
-    ValidationError)
+    ValidationError,
+    field_validator,
+    model_validator,
+)
 
 from feast.errors import (
     FeastFeatureServerTypeInvalidError,
@@ -23,9 +29,6 @@ from feast.errors import (
 )
 from feast.importer import import_class
 from feast.usage import log_exceptions
-
-#debug
-import inspect
 
 warnings.simplefilter("once", RuntimeWarning)
 
@@ -90,11 +93,13 @@ FEATURE_SERVER_TYPE_FOR_PROVIDER = {
 
 class FeastBaseModel(BaseModel):
     """Feast Pydantic Configuration Class"""
+
     model_config = ConfigDict(arbitrary_types_allowed=True, extra="allow")
 
 
 class FeastConfigBaseModel(BaseModel):
     """Feast Pydantic Configuration Class"""
+
     model_config = ConfigDict(arbitrary_types_allowed=True, extra="forbid")
 
 
@@ -377,7 +382,7 @@ class RepoConfig(FeastBaseModel):
             offline_config_class(**values["offline_store"])
         except ValidationError as e:
             raise e
-        
+
         return values
 
     @model_validator(mode="before")
@@ -450,6 +455,7 @@ class RepoConfig(FeastBaseModel):
                 f,
                 sort_keys=False,
             )
+
     model_config = ConfigDict(populate_by_name=True)
 
 

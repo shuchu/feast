@@ -3,7 +3,7 @@
 import warnings
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Set, Tuple, Union, Literal
+from typing import Any, Callable, Dict, List, Literal, Optional, Set, Tuple, Union
 
 import numpy as np
 import pandas

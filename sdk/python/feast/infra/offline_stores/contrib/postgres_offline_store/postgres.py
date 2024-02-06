@@ -9,10 +9,10 @@ from typing import (
     Iterator,
     KeysView,
     List,
+    Literal,
     Optional,
     Tuple,
     Union,
-    Literal,
 )
 
 import numpy as np

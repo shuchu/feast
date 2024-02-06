@@ -14,7 +14,7 @@
 import itertools
 import logging
 from datetime import datetime
-from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Literal, Union
+from typing import Any, Callable, Dict, List, Literal, Optional, Sequence, Tuple, Union
 
 from pydantic import StrictBool, StrictStr
 

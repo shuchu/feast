@@ -14,11 +14,11 @@ from typing import (
     Dict,
     Iterator,
     List,
+    Literal,
     Optional,
     Tuple,
     Union,
     cast,
-    Literal,
 )
 
 import numpy as np

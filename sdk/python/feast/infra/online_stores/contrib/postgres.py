@@ -2,7 +2,7 @@ import contextlib
 import logging
 from collections import defaultdict
 from datetime import datetime
-from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Literal
+from typing import Any, Callable, Dict, List, Literal, Optional, Sequence, Tuple
 
 import psycopg2
 import pytz

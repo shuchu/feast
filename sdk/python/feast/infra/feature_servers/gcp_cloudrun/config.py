@@ -1,5 +1,6 @@
-from pydantic import StrictBool
 from typing import Literal
+
+from pydantic import StrictBool
 
 from feast.infra.feature_servers.base_config import BaseFeatureServerConfig
 

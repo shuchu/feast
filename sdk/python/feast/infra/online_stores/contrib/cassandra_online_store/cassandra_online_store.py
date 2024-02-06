@@ -20,7 +20,17 @@ Cassandra/Astra DB online store for Feast.
 
 import logging
 from datetime import datetime
-from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Tuple, Literal
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    Iterable,
+    List,
+    Literal,
+    Optional,
+    Sequence,
+    Tuple,
+)
 
 from cassandra.auth import PlainTextAuthProvider
 from cassandra.cluster import (

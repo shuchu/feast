@@ -21,11 +21,11 @@ from typing import (
     Callable,
     Dict,
     List,
+    Literal,
     Optional,
     Sequence,
     Tuple,
     Union,
-    Literal,
 )
 
 import pytz

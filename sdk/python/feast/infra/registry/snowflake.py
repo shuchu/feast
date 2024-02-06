@@ -5,7 +5,7 @@ from binascii import hexlify
 from datetime import datetime, timedelta
 from enum import Enum
 from threading import Lock
-from typing import Any, Callable, List, Optional, Set, Union, Literal
+from typing import Any, Callable, List, Literal, Optional, Set, Union
 
 from pydantic import ConfigDict, Field, StrictStr
 

@@ -1,7 +1,7 @@
 import calendar
 import struct
 from datetime import datetime
-from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Literal
+from typing import Any, Callable, Dict, List, Literal, Optional, Sequence, Tuple
 
 from happybase import ConnectionPool
 from happybase.connection import DEFAULT_PROTOCOL, DEFAULT_TRANSPORT

@@ -17,7 +17,17 @@ from datetime import datetime
 from multiprocessing.pool import ThreadPool
 from queue import Empty, Queue
 from threading import Lock, Thread
-from typing import Any, Callable, Dict, Iterator, List, Optional, Sequence, Tuple, Literal
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    Iterator,
+    List,
+    Literal,
+    Optional,
+    Sequence,
+    Tuple,
+)
 
 from pydantic import PositiveInt, StrictStr
 

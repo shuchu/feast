@@ -8,10 +8,10 @@ from typing import (
     Dict,
     Iterator,
     List,
+    Literal,
     Optional,
     Tuple,
     Union,
-    Literal,
 )
 
 import numpy as np

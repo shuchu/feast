@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 from datetime import datetime
-from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Literal
+from typing import Any, Callable, Dict, List, Literal, Optional, Sequence, Tuple
 
 import pymysql
 import pytz

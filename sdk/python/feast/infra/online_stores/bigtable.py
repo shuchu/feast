@@ -2,7 +2,7 @@ import hashlib
 import logging
 from concurrent import futures
 from datetime import datetime
-from typing import Any, Callable, Dict, List, Optional, Sequence, Set, Tuple, Literal
+from typing import Any, Callable, Dict, List, Literal, Optional, Sequence, Set, Tuple
 
 import google
 from google.cloud import bigtable
