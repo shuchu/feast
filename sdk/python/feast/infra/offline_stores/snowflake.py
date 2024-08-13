@@ -106,6 +106,9 @@ class SnowflakeOfflineStoreConfig(FeastConfigBaseModel):
     private_key: Optional[str] = None
     """ Snowflake private key file path"""
 
+    private_key_content: Optional[bytes] = None
+    """ Snowflake private key stored as bytes"""
+
     private_key_passphrase: Optional[str] = None
     """ Snowflake private key file passphrase"""
 
