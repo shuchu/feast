@@ -10,6 +10,7 @@ import pandas as pd
 import pyarrow
 import pyarrow.dataset
 import pyarrow.parquet
+import pytz
 
 from feast.data_source import DataSource
 from feast.errors import (
@@ -615,10 +616,8 @@ def _normalize_timestamp(
     if created_timestamp_column:
         created_timestamp_column_type = df_to_join_types[created_timestamp_column]
 
-    if (
-        not hasattr(timestamp_field_type, "tz")
-        or timestamp_field_type.tz != timezone.utc
-    ):
+    #TODO: Need to figure out why the timestamp_field_type.tz equals to pytz.UTC 
+    if not hasattr(timestamp_field_type, "tz") or timestamp_field_type.tz != pytz.UTC:
         # if you are querying for the event timestamp field, we have to deduplicate
         if len(df_to_join[timestamp_field].shape) > 1:
             df_to_join, dups = _df_column_uniquify(df_to_join)
@@ -626,13 +625,14 @@ def _normalize_timestamp(
 
         # Make sure all timestamp fields are tz-aware. We default tz-naive fields to UTC
         df_to_join[timestamp_field] = df_to_join[timestamp_field].apply(
-            lambda x: x if x.tzinfo else x.replace(tzinfo=timezone.utc),
+            lambda x: x if x.tzinfo is not None else x.replace(tzinfo=timezone.utc),
             meta=(timestamp_field, "datetime64[ns, UTC]"),
         )
 
+    #TODO: Need to figure out why the timestamp_field_type.tz equals to pytz.UTC 
     if created_timestamp_column and (
         not hasattr(created_timestamp_column_type, "tz")
-        or created_timestamp_column_type.tz != timezone.utc
+        or created_timestamp_column_type.tz != pytz.UTC
     ):
         if len(df_to_join[created_timestamp_column].shape) > 1:
             # if you are querying for the created timestamp field, we have to deduplicate
@@ -642,7 +642,7 @@ def _normalize_timestamp(
         df_to_join[created_timestamp_column] = df_to_join[
             created_timestamp_column
         ].apply(
-            lambda x: x if x.tzinfo else x.replace(tzinfo=timezone.utc),
+            lambda x: x if x.tzinfo is not None else x.replace(tzinfo=timezone.utc),
             meta=(timestamp_field, "datetime64[ns, UTC]"),
         )
 
